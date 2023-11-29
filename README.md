@@ -29,6 +29,8 @@ pnpm -v
 node -v
 ```
 
+#### **If you install node with caddy, it will automatically add `npm` and `npx` to your path.**
+
 ### Use Caddy in a project
 If you run caddy in a directory with a `package.json` file,
 it will automatically install the needed version of node and pnpm.

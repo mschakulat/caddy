@@ -17,6 +17,8 @@ func Setup() *cli.Command {
 			setup.InitSystemPath()
 			setup.CreateBin(config.CaddyTool.Node)
 			setup.CreateBin(config.CaddyTool.Pnpm)
+			setup.CreateBin(config.CaddyTool.Npm)
+			setup.CreateBin(config.CaddyTool.Npx)
 			setup.Enable()
 
 			if !cCtx.Bool("skip-msg") {

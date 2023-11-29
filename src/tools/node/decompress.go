@@ -96,6 +96,8 @@ func Uncompress(archivePath string, version string) error {
 	}
 
 	os.Chmod(tools.ToolBin(config.CaddyTool.Node, version), 0755)
+	os.Chmod(tools.ToolBin(config.CaddyTool.Npm, version), 0755)
+	os.Chmod(tools.ToolBin(config.CaddyTool.Npx, version), 0755)
 
 	return nil
 }

@@ -5,18 +5,22 @@ import (
 	"path/filepath"
 )
 
-var Version = "0.2.3"
+var Version = "0.3.0"
 
 var ProjectName = "caddy"
 
 type CaddyToolStruct struct {
 	Node string
 	Pnpm string
+	Npm  string
+	Npx  string
 }
 
 var CaddyTool = CaddyToolStruct{
 	Node: "node",
 	Pnpm: "pnpm",
+	Npm:  "npm",
+	Npx:  "npx",
 }
 
 type SystemPathStructure struct {

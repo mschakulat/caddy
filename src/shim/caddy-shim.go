@@ -27,6 +27,13 @@ func main() {
 
 	tool = path.Base(tool)
 
+	subTool := ""
+	if tool == "npm" || tool == "npx" {
+		subTool = tool
+		tool = "node"
+	}
+	fmt.Println(subTool)
+
 	var version string
 	var versions parser.CaddyStruct
 	defaultVersion := tools.GetDefaultVersion(tool)
@@ -46,11 +53,15 @@ func main() {
 			tools.SetDefaultVersion(tool, version)
 		}
 		tools.CleanupTmp()
-		fmt.Println()
+		// fmt.Println()
 	}
 
 	if len(version) == 0 && defaultVersion != nil {
 		version = *defaultVersion
+	}
+
+	if len(subTool) != 0 {
+		tool = subTool
 	}
 
 	path, err := exec.LookPath(tools.ToolBin(tool, version))
