@@ -1,6 +1,15 @@
 #!/usr/bin/env bash
 
-version="0.2.1"
+latest_version() {
+  local owner="mschakulat"
+  local repo="caddy"
+
+  local release_info=$(curl --silent "https://api.github.com/repos/$owner/$repo/releases/latest")
+  local version_with_v=$(echo "$release_info" | jq -r .tag_name)
+  local version=${version_with_v#v}
+
+  echo "$version"
+}
 
 os_architecture() {
   if [[ "$OSTYPE" == "linux-gnu"* ]]; then
@@ -41,7 +50,9 @@ install_release() {
 
   cp "$extract_to"/release/* "$install_dir"/bin/
 
-  "$install_dir"/bin/caddy setup --skip-msg
+  if [ "$(has_caddy_home)" -eq "0" ]; then
+    "$install_dir"/bin/caddy setup --skip-msg
+  fi
 
   info "Setup" "complete"
 }
@@ -54,9 +65,10 @@ create_tree() {
 
 has_caddy_home() {
   if [ -n "${CADDY_HOME-}" ] && [ -e "$CADDY_HOME" ]; then
-    return 1
+    echo "1"
+  else
+    echo "0"
   fi
-  return 0
 }
 
 info() {
@@ -64,6 +76,8 @@ info() {
   local details="$2"
   command printf '\033[1;96m%12s\033[0m %s\n' "$action" "$details" 1>&2
 }
+
+version=$(latest_version)
 
 install_dir="${CADDY_HOME:-"$HOME/.caddy"}"
 

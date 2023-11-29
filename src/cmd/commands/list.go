@@ -9,7 +9,7 @@ import (
 func List() *cli.Command {
 	return &cli.Command{
 		Name:  "list",
-		Usage: "Lists all installed tools in your toolchain",
+		Usage: "Lists all installed tools and their versions",
 		Subcommands: []*cli.Command{
 			{
 				Name: "node",

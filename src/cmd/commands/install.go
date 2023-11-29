@@ -18,7 +18,7 @@ import (
 func Install() *cli.Command {
 	return &cli.Command{
 		Name:  "install",
-		Usage: "Installs a tool in your toolchain",
+		Usage: "Install a tool with a specific version",
 		Action: func(cCtx *cli.Context) error {
 			tool, requestedVersion := command_helper.SplitToolAndVersion(cCtx.Args().Get(0))
 
