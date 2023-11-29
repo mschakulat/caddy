@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-version="0.2.0"
+version="0.2.1"
 
 os_architecture() {
   if [[ "$OSTYPE" == "linux-gnu"* ]]; then
@@ -41,9 +41,7 @@ install_release() {
 
   cp "$extract_to"/release/* "$install_dir"/bin/
 
-  if has_caddy_home; then
-    "$install_dir"/bin/caddy setup --skip-msg
-  fi
+  "$install_dir"/bin/caddy setup --skip-msg
 
   info "Setup" "complete"
 }
