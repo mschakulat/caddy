@@ -29,6 +29,7 @@ pnpm -v
 node -v
 ```
 
+### Use Caddy in a project
 If you run caddy in a directory with a `package.json` file,
 it will automatically install the needed version of node and pnpm.
 Therefor you hava to add the following to your `package.json` file:
@@ -40,6 +41,8 @@ Therefor you hava to add the following to your `package.json` file:
     }
 }
 ```
+
+### Pin a tool to a specific version
 You also can use the `caddy pin` command to add a specific version of a tool to your `package.json` file:
 ```bash
 caddy pin pnpm@8.10.0
