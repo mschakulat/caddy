@@ -46,7 +46,9 @@ func main() {
 		}
 		tools.CleanupTmp()
 		fmt.Println()
-	} else {
+	}
+
+	if len(version) == 0 && defaultVersion != nil {
 		version = *defaultVersion
 	}
 
