@@ -20,7 +20,7 @@ func List() {
 		os.Exit(0)
 	}
 
-	fmt.Printf("⚡️ Pnpm runtimes in your toolchain:\n\n")
+	fmt.Printf("⚡️ Installed pnpm runtimes:\n\n")
 
 	defaultVersion := tools.GetDefaultVersion(config.CaddyTool.Pnpm)
 

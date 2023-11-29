@@ -14,7 +14,7 @@ import (
 func Uninstall() *cli.Command {
 	return &cli.Command{
 		Name:  "uninstall",
-		Usage: "Uninstalls a tool in your toolchain",
+		Usage: "Uninstalls a tool with a specific version",
 		Action: func(cCtx *cli.Context) error {
 			tool, requestedVersion := command_helper.SplitToolAndVersion(cCtx.Args().Get(0))
 

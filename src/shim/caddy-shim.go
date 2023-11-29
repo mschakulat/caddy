@@ -8,6 +8,7 @@ import (
 	nodePipeline "caddy/src/tools/node/pipeline"
 	pnpmPipeline "caddy/src/tools/pnpm/pipeline"
 	"fmt"
+	"github.com/logrusorgru/aurora"
 	"log"
 	"os"
 	"os/exec"
@@ -54,7 +55,8 @@ func main() {
 
 	path, err := exec.LookPath(tools.ToolBin(tool, version))
 	if err != nil {
-		fmt.Printf("Could not find %s version %s\n", tool, version)
+		fmt.Println(aurora.Yellow("Could not find any version"))
+		fmt.Println("Please install a version with `caddy install`")
 		os.Exit(0)
 	}
 

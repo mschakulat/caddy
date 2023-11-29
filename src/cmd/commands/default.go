@@ -58,7 +58,7 @@ func hasDownloadedVersion(tool string, version string) bool {
 
 func setToDefault(tool string, version string) {
 	if !hasDownloadedVersion(tool, version) {
-		color.Yellow("Version not in toolchain")
+		fmt.Println(aurora.Yellow("Version not installed"))
 		os.Exit(0)
 	}
 

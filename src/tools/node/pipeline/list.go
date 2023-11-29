@@ -20,7 +20,7 @@ func List() {
 		os.Exit(0)
 	}
 
-	fmt.Printf("⚡️ Node runtimes in your toolchain:\n\n")
+	fmt.Printf("⚡️ Installed node runtimes:\n\n")
 
 	defaultVersion := tools.GetDefaultVersion(config.CaddyTool.Node)
 
