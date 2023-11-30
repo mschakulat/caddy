@@ -32,7 +32,7 @@ node -v
 #### **If you install node with caddy, it will automatically add `npm` and `npx` to your path.**
 
 ### Use Caddy in a project
-If you run caddy in a directory with a `package.json` file,
+If you run Caddy in a directory with a `package.json` file,
 it will automatically install the needed version of node and pnpm.
 Therefor you hava to add the following to your `package.json` file:
 ```json
@@ -49,4 +49,15 @@ You also can use the `caddy pin` command to add a specific version of a tool to 
 ```bash
 caddy pin pnpm@8.10.0
 caddy pin node@21.2.0
+```
+
+### Uninstall Caddy
+If you want to uninstall Caddy, you can simply delete the Caddy directory:
+```bash
+rm ~/.caddy
+```
+After that you have to remove the following lines from your `~/.bashrc` or `~/.zshrc` file:
+```bash
+export CADDY_HOME=~/.caddy
+export PATH=$CADDY_HOME/bin:$PATH
 ```
