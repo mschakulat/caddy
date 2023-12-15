@@ -2,7 +2,9 @@
     <img alt="Caddy" src="./caddy.png?raw=true" width="360">
 </p>
 
-## A JavaScript tool manager
+<p align="center">
+    A JavaScript tool manager
+</p>
 
 ### Use Caddy to install and manage your JavaScript tools
 
