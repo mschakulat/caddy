@@ -1,6 +1,7 @@
 package parser
 
 import (
+	"caddy/src/config"
 	"caddy/src/fileinfo"
 	"fmt"
 	"github.com/logrusorgru/aurora"
@@ -32,9 +33,9 @@ func GetVersionsFromPackage(extend *string, currentDir *string) CaddyStruct {
 
 	fileContent, _ := os.ReadFile(path)
 
-	node := gjson.Get(string(fileContent), "caddy.node")
-	pnpm := gjson.Get(string(fileContent), "caddy.pnpm")
-	extends := gjson.Get(string(fileContent), "caddy.extends")
+	node := gjson.Get(string(fileContent), config.PackageJsonIdentifier+".node")
+	pnpm := gjson.Get(string(fileContent), config.PackageJsonIdentifier+".pnpm")
+	extends := gjson.Get(string(fileContent), config.PackageJsonIdentifier+".extends")
 
 	if len(extends.Str) > 0 {
 		if !fileinfo.Exist(filepath.Join(dir, extends.Str)) {

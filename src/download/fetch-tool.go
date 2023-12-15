@@ -51,6 +51,8 @@ func FetchTool(downloadLink string, target string, description string) string {
 		fmt.Println(err)
 	}
 
+	println()
+
 	return filePath
 }
 
