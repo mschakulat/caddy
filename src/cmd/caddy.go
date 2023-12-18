@@ -26,6 +26,7 @@ func main() {
 			commands.List(),
 			commands.Default(),
 			commands.Pin(),
+			commands.Config(),
 		},
 	}
 

@@ -1,11 +1,10 @@
 package setup
 
 import (
-	"caddy/src/config"
+	"caddy/src/shell"
 	"fmt"
 	"github.com/logrusorgru/aurora"
 	"os"
-	"path/filepath"
 )
 
 type EnableCommands struct {
@@ -19,7 +18,7 @@ func Enable() {
 		Path: "export PATH=\"$CADDY_HOME/bin:$PATH\"",
 	}
 
-	if !hasSupportedShell() {
+	if !shell.HasSupportedShell() {
 		fmt.Println(aurora.Bold(aurora.Yellow("Unsupported shell")))
 		fmt.Println("Only bash and zsh are supported at the moment")
 		fmt.Println("Please add the following lines at the end your shell config file:")
@@ -28,37 +27,8 @@ func Enable() {
 		os.Exit(0)
 	}
 
-	configFile := getShellConfig()
-	appendToFile(configFile, "\n# Caddy")
-	appendToFile(configFile, "\n"+commands.Home)
-	appendToFile(configFile, "\n"+commands.Path)
-}
-
-func appendToFile(file string, content string) {
-	f, err := os.OpenFile(file, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
-	if err != nil {
-		fmt.Printf("Error: %s\n", err)
-	}
-	defer func(f *os.File) {
-		_ = f.Close()
-	}(f)
-
-	if _, err := f.WriteString(content); err != nil {
-		fmt.Printf("Error: %s\n", err)
-	}
-}
-
-func hasSupportedShell() bool {
-	shell := os.Getenv("SHELL")
-	return shell == "/bin/bash" || shell == "/bin/zsh"
-}
-
-func getShellConfig() string {
-	shell := os.Getenv("SHELL")
-	if shell == "/bin/bash" {
-		return filepath.Join(config.HomeDir, ".bashrc")
-	} else if shell == "/bin/zsh" {
-		return filepath.Join(config.HomeDir, ".zshrc")
-	}
-	return ""
+	configFile := shell.GetShellConfig()
+	shell.AppendToFile(configFile, "\n# Caddy")
+	shell.AppendToFile(configFile, "\n"+commands.Home)
+	shell.AppendToFile(configFile, "\n"+commands.Path)
 }

@@ -2,7 +2,7 @@ package commands
 
 import (
 	commandhelper "caddy/src/cmd/commands/command-helper"
-	"caddy/src/config"
+	"caddy/src/parser"
 	"fmt"
 	"github.com/logrusorgru/aurora"
 	"github.com/tidwall/sjson"
@@ -28,7 +28,7 @@ func Pin() *cli.Command {
 			fileContent, _ := os.ReadFile(packageJson)
 
 			newJsonString, _ := sjson.Set(
-				string(fileContent), strings.Join([]string{config.PackageJsonIdentifier, tool}, "."), requestedVersion,
+				string(fileContent), strings.Join([]string{parser.GetIdentifier(), tool}, "."), requestedVersion,
 			)
 
 			err := os.WriteFile(packageJson, []byte(newJsonString), 0644)

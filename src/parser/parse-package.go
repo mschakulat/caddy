@@ -33,9 +33,11 @@ func GetVersionsFromPackage(extend *string, currentDir *string) CaddyStruct {
 
 	fileContent, _ := os.ReadFile(path)
 
-	node := gjson.Get(string(fileContent), config.PackageJsonIdentifier+".node")
-	pnpm := gjson.Get(string(fileContent), config.PackageJsonIdentifier+".pnpm")
-	extends := gjson.Get(string(fileContent), config.PackageJsonIdentifier+".extends")
+	identifier := GetIdentifier()
+
+	node := gjson.Get(string(fileContent), identifier+".node")
+	pnpm := gjson.Get(string(fileContent), identifier+".pnpm")
+	extends := gjson.Get(string(fileContent), identifier+".extends")
 
 	if len(extends.Str) > 0 {
 		if !fileinfo.Exist(filepath.Join(dir, extends.Str)) {
@@ -61,4 +63,13 @@ func HasPackageJson() bool {
 	path := filepath.Join(currentDir, "package.json")
 	_, err := os.Stat(path)
 	return !os.IsNotExist(err)
+}
+
+func GetIdentifier() string {
+	identifier := os.Getenv(config.CaddyEnvId)
+	if identifier == "" {
+		identifier = config.PackageJsonIdentifier
+	}
+
+	return identifier
 }

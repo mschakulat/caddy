@@ -5,11 +5,13 @@ import (
 	"path/filepath"
 )
 
-var Version = "0.3.2"
+var Version = "0.3.3"
 
 var ProjectName = "caddy"
 
-var PackageJsonIdentifier = "volta"
+var CaddyEnvId = "CADDY_IDENTIFIER"
+
+var PackageJsonIdentifier = "caddy"
 
 type CaddyToolStruct struct {
 	Node string

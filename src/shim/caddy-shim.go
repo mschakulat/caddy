@@ -64,7 +64,7 @@ func main() {
 		tool = subTool
 	}
 
-	path, err := exec.LookPath(tools.ToolBin(tool, version))
+	toolPath, err := exec.LookPath(tools.ToolBin(tool, version))
 	if err != nil {
 		fmt.Println(aurora.Yellow("Could not find any version"))
 		fmt.Println("Please install a version with `caddy install`")
@@ -75,7 +75,7 @@ func main() {
 	args = append([]string{tool}, args...)
 
 	// Replace this process with the given command
-	err = syscall.Exec(path, args, os.Environ())
+	err = syscall.Exec(toolPath, args, os.Environ())
 
 	// If we reach this point, an error occured
 	if err != nil {
