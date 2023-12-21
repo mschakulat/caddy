@@ -25,8 +25,6 @@ func InitConfig() {
 	
 	viper.SetDefault(CaddyConfigKeys.Identifier, PackageJsonIdentifier)
 	
-	
-	
 	if err := viper.ReadInConfig(); err != nil {
 		err = os.WriteFile(CaddyConfigFilePath, nil, 0644)
 		if err != nil {
