@@ -17,6 +17,8 @@ import (
 )
 
 func main() {
+	config.InitConfig()
+	
 	tool := os.Args[0]
 	args := os.Args[1:]
 
