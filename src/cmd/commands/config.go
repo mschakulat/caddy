@@ -2,9 +2,9 @@ package commands
 
 import (
 	"caddy/src/config"
-	"caddy/src/shell"
 	"fmt"
 	"github.com/logrusorgru/aurora"
+	"github.com/spf13/viper"
 	"github.com/urfave/cli/v2"
 	"os"
 	"regexp"
@@ -25,18 +25,12 @@ func Config() *cli.Command {
 						os.Exit(0)
 					}
 
-					configFile := shell.GetShellConfig()
-					identifier := os.Getenv(config.CaddyEnvId)
-					if len(identifier) != 0 {
-						fmt.Println(aurora.Cyan("Identifier already set: " + identifier))
-						fmt.Printf("To change or remove it, please edit your shell config manually (%s)\n", configFile)
-						os.Exit(0)
-					}
+					config.InitConfig()
+					viper.Set(config.CaddyConfigKeys.Identifier, id)
 
-					shell.AppendToFile(configFile, "\nexport "+config.CaddyEnvId+"=\""+id+"\"")
+					config.WriteConfig()
 
-					fmt.Println(aurora.Cyan("Identifier added to your env variables"))
-					fmt.Println("Please reload your shell config or open a new terminal")
+					fmt.Printf("%s %s\n", aurora.Bold(aurora.Cyan("Identifier")), id)
 
 					return nil
 				},

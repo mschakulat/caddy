@@ -9,6 +9,8 @@ import (
 )
 
 func main() {
+	config.InitConfig()
+	
 	cli.VersionFlag = &cli.BoolFlag{
 		Name:    "version",
 		Aliases: []string{"v"},

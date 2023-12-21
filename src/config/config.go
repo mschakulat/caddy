@@ -5,11 +5,9 @@ import (
 	"path/filepath"
 )
 
-var Version = "0.3.3"
+var Version = "0.3.4"
 
 var ProjectName = "caddy"
-
-var CaddyEnvId = "CADDY_IDENTIFIER"
 
 var PackageJsonIdentifier = "caddy"
 

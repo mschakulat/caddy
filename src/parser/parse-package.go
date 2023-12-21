@@ -5,6 +5,7 @@ import (
 	"caddy/src/fileinfo"
 	"fmt"
 	"github.com/logrusorgru/aurora"
+	"github.com/spf13/viper"
 	"github.com/tidwall/gjson"
 	"os"
 	"path/filepath"
@@ -66,10 +67,5 @@ func HasPackageJson() bool {
 }
 
 func GetIdentifier() string {
-	identifier := os.Getenv(config.CaddyEnvId)
-	if identifier == "" {
-		identifier = config.PackageJsonIdentifier
-	}
-
-	return identifier
+	return viper.GetString(config.CaddyConfigKeys.Identifier)
 }
