@@ -68,7 +68,7 @@ caddy pin node@21.2.0
 
 #### No conflict mode
 
-You are free to change the section term which you are using in the `package.json`. By default Caddy uses the term `caddy`:
+You are free to change the section identifier which you are using in the `package.json`. By default Caddy uses the identifier `caddy`:
 
 ```json
 {
@@ -81,14 +81,14 @@ You are free to change the section term which you are using in the `package.json
 But you can change it to whatever you want:
 
 ```bash
-caddy config id <your-term>
+caddy config id <your-identifier>
 ```
 
-After that, pinning or reading a version will respect your configured term:
+After that, pinning or reading a version will respect your configured identifier:
 
 ```json
 {
-    "<your-term>": {
+    "<your-identifier>": {
         "pnpm": "8.10.0",
         "node": "21.2.0"
     }
