@@ -40,7 +40,7 @@ pnpm -v
 node -v
 ```
 
-#### **If you install node with caddy, it will automatically add `npm` and `npx` to your path.**
+#### **If you install node with Caddy, it will automatically add `npm` and `npx` to your path.**
 
 ### Use Caddy in a project
 
@@ -64,6 +64,35 @@ You also can use the `caddy pin` command to add a specific version of a tool to 
 ```bash
 caddy pin pnpm@8.10.0
 caddy pin node@21.2.0
+```
+
+## No conflict mode
+
+You are free to change the section term which you are using in the `package.json`. By default Caddy uses the term `caddy`:
+
+```json
+{
+    "caddy": {
+        "pnpm": "8.10.0",
+        "node": "21.2.0"
+    }
+}
+```
+But you can change it to whatever you want:
+
+```bash
+caddy config id <your-term>
+```
+
+After that, pinning or reading a version will respect your configured term:
+
+```json
+{
+    "<your-term>": {
+        "pnpm": "8.10.0",
+        "node": "21.2.0"
+    }
+}
 ```
 
 ### Uninstall Caddy
