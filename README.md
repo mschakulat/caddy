@@ -66,7 +66,7 @@ caddy pin pnpm@8.10.0
 caddy pin node@21.2.0
 ```
 
-## No conflict mode
+#### No conflict mode
 
 You are free to change the section term which you are using in the `package.json`. By default Caddy uses the term `caddy`:
 
