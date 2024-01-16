@@ -16,7 +16,7 @@ Currently supported tools:
 ### Install Caddy
 
 ```bash
-curl -s https://raw.githubusercontent.com/mschakulat/caddy/main/ci/install.sh | bash
+curl -s https://get.caddy.fetchit.de | bash
 ```
 
 ### Install a tool
