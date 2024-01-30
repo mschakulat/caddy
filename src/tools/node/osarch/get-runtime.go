@@ -13,12 +13,15 @@ func GetPlatform() string {
 	switch currentPlatform {
 	case "linux":
 		platform = "linux"
+		break
 	case "darwin":
 		platform = "darwin"
+		break
 	case "windows":
 		platform = "win"
+		break
 	default:
-		err := fmt.Sprintf("Platform [%s] not tools", currentPlatform)
+		err := fmt.Sprintf("Platform [%s] not supported", currentPlatform)
 		fmt.Println(err)
 		os.Exit(1)
 	}
@@ -30,17 +33,19 @@ func GetArch() string {
 	var arch string
 
 	currentArch := runtime.GOARCH
+
 	switch currentArch {
-	case "x86_64":
-	case "amd64":
+	case "x86_64", "amd64":
 		arch = "x64"
+		break
 	case "armv":
 		arch = "armv7l"
-	case "arm64":
-	case "aarch64":
+		break
+	case "arm64", "aarch64":
 		arch = "arm64"
+		break
 	default:
-		err := fmt.Sprintf("Architecture [%s] not tools", currentArch)
+		err := fmt.Sprintf("Architecture [%s] not supported", currentArch)
 		fmt.Println(err)
 		os.Exit(1)
 	}
