@@ -16,6 +16,7 @@ func FetchTool(downloadLink string, target string, description string) string {
 	if resp.StatusCode != 200 {
 		fmt.Println(aurora.Yellow("Could not download binary. Please check your version constraint."))
 		fmt.Println("This usually happens when an incorrect version is specified in your package.json file.")
+		fmt.Println("Tried to load: " + downloadLink)
 		os.Exit(0)
 	}
 	defer check(resp.Body.Close)
