@@ -30,6 +30,7 @@ func main() {
 			commands.Pin(),
 			commands.Config(),
 			commands.Update(),
+			commands.Debug(),
 		},
 	}
 

@@ -5,7 +5,7 @@ import (
 	"path/filepath"
 )
 
-var Version = "0.3.10"
+var Version = "0.3.11"
 
 var ProjectName = "caddy"
 
