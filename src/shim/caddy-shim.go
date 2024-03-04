@@ -18,7 +18,7 @@ import (
 
 func main() {
 	config.InitConfig()
-	
+
 	tool := os.Args[0]
 	args := os.Args[1:]
 
@@ -34,7 +34,6 @@ func main() {
 		subTool = tool
 		tool = "node"
 	}
-	fmt.Println(subTool)
 
 	var version string
 	var versions parser.CaddyStruct
@@ -55,7 +54,6 @@ func main() {
 			tools.SetDefaultVersion(tool, version)
 		}
 		tools.CleanupTmp()
-		// fmt.Println()
 	}
 
 	if len(version) == 0 && defaultVersion != nil {
