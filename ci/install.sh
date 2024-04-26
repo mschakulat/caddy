@@ -4,6 +4,11 @@ latest_version() {
   local owner="mschakulat"
   local repo="caddy"
 
+  if ! command -v jq &> /dev/null; then
+    echo "jq is not installed. Please install jq before running this script."
+    exit 1
+  fi
+  
   local release_info=$(curl --silent "https://api.github.com/repos/$owner/$repo/releases/latest")
   local version_with_v=$(echo "$release_info" | jq -r .tag_name)
   local version=${version_with_v#v}
