@@ -15,11 +15,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Set up docker buildx
-        uses: docker/setup-buildx-action@v2
+        uses: docker/setup-buildx-action@v3
       - name: Build docker image
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v5
         with:
           cache-from: type=gha
           cache-to: type=gha,mode=max
@@ -31,7 +31,7 @@ jobs:
       - name: Compile and package Caddy
         run: ./ci/build-linux.sh caddy-linux
       - name: Upload release artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: linux
           path: release/caddy-linux.tar.gz
@@ -41,11 +41,11 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: Check out code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Compile and package Caddy
         run: ./ci/build-macos-x86_64.sh caddy-macos
       - name: Upload release artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: macos
           path: release/caddy-macos.tar.gz
@@ -55,11 +55,11 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: Check out code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Compile and package Caddy
         run: ./ci/build-macos-arm.sh caddy-macos-aarch64
       - name: Upload release artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: macos-aarch64
           path: release/caddy-macos-aarch64.tar.gz
@@ -74,7 +74,7 @@ jobs:
     if: github.event_name == 'push'
     steps:
       - name: Check out code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Determine release version
         id: release_info
         env:
@@ -82,19 +82,19 @@ jobs:
         run: echo "version=${TAG:11}" >> $GITHUB_OUTPUT
 
       - name: Fetch Linux artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: linux
           path: release
 
       - name: Fetch MacOS artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: macos
           path: release
 
       - name: Fetch MacOS (ARM) artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: macos-aarch64
           path: release
