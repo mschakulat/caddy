@@ -38,7 +38,7 @@ jobs:
 
   macos:
     name: Build - MacOS
-    runs-on: macos-latest
+    runs-on: macos-12
     steps:
       - name: Check out code
         uses: actions/checkout@v4
@@ -52,7 +52,7 @@ jobs:
 
   macos-aarch64:
     name: Build - MacOS (ARM)
-    runs-on: macos-latest
+    runs-on: macos-12
     steps:
       - name: Check out code
         uses: actions/checkout@v4
