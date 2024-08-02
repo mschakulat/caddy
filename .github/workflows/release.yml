@@ -42,6 +42,10 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v4
+      - name: Checkout Go version
+        uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
       - name: Compile and package Caddy
         run: ./ci/build-macos-x86_64.sh caddy-macos
       - name: Upload release artifact
@@ -56,6 +60,10 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v4
+      - name: Checkout Go version
+        uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
       - name: Compile and package Caddy
         run: ./ci/build-macos-arm.sh caddy-macos-aarch64
       - name: Upload release artifact
