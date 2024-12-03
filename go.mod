@@ -2,7 +2,7 @@ module caddy
 
 go 1.22
 
-toolchain go1.23.3
+toolchain go1.23.4
 
 require (
 	github.com/Masterminds/semver v1.5.0
