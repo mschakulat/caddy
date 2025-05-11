@@ -2,7 +2,7 @@ module caddy
 
 go 1.22
 
-toolchain go1.24.2
+toolchain go1.24.3
 
 require (
 	github.com/Masterminds/semver v1.5.0
@@ -13,7 +13,7 @@ require (
 	github.com/tidwall/gjson v1.18.0
 	github.com/tidwall/sjson v1.2.5
 	github.com/urfave/cli/v2 v2.27.6
-	github.com/urfave/cli/v3 v3.3.1
+	github.com/urfave/cli/v3 v3.3.3
 	gopkg.in/yaml.v3 v3.0.1
 )
 
