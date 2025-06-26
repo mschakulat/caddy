@@ -12,7 +12,7 @@ require (
 	github.com/spf13/viper v1.20.1
 	github.com/tidwall/gjson v1.18.0
 	github.com/tidwall/sjson v1.2.5
-	github.com/urfave/cli/v2 v2.27.7
+	github.com/urfave/cli/v3 v3.3.8
 	github.com/urfave/cli/v3 v3.3.8
 	gopkg.in/yaml.v3 v3.0.1
 )
