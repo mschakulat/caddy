@@ -1,25 +1,27 @@
 package commands
 
 import (
-	"caddy/src/cmd/commands/command-helper"
+	command_helper "caddy/src/cmd/commands/command-helper"
 	"caddy/src/config"
 	"caddy/src/tools"
 	"caddy/src/tools/node"
 	nodePipeline "caddy/src/tools/node/pipeline"
 	"caddy/src/tools/pnpm"
 	pnpmPipeline "caddy/src/tools/pnpm/pipeline"
+	"context"
 	"fmt"
-	"github.com/fatih/color"
-	"github.com/urfave/cli/v2"
 	"os"
 	"strings"
+
+	"github.com/fatih/color"
+	"github.com/urfave/cli/v3"
 )
 
 func Install() *cli.Command {
 	return &cli.Command{
 		Name:  "install",
 		Usage: "Install a tool with a specific version",
-		Action: func(cCtx *cli.Context) error {
+		Action: func(ctx context.Context, cCtx *cli.Command) error {
 			tool, requestedVersion := command_helper.SplitToolAndVersion(cCtx.Args().Get(0))
 
 			switch tool {

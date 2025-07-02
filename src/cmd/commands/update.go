@@ -2,18 +2,20 @@ package commands
 
 import (
 	"caddy/src/shell"
+	"context"
 	"fmt"
-	"github.com/logrusorgru/aurora"
-	"github.com/urfave/cli/v2"
 	"os"
 	"os/exec"
+
+	"github.com/logrusorgru/aurora"
+	"github.com/urfave/cli/v3"
 )
 
 func Update() *cli.Command {
 	return &cli.Command{
 		Name:  "update",
 		Usage: "Update caddy to the latest version",
-		Action: func(cCtx *cli.Context) error {
+		Action: func(ctx context.Context, cCtx *cli.Command) error {
 			cmd := exec.Command(shell.GetShell(), "-c", `curl -s https://raw.githubusercontent.com/mschakulat/caddy/main/ci/install.sh | bash`)
 			err := cmd.Run()
 
@@ -23,7 +25,7 @@ func Update() *cli.Command {
 			}
 
 			fmt.Println(aurora.Cyan("⛳️ You now have the latest version of Caddy"))
-			
+
 			return nil
 		},
 	}
