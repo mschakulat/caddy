@@ -15,7 +15,7 @@ func HasSupportedShell() bool {
 func GetShellConfig() string {
 	shell := os.Getenv("SHELL")
 	if shell == "/bin/bash" {
-		return filepath.Join(config.HomeDir, ".bashrc")
+		return filepath.Join(config.HomeDir, ".bash_profile")
 	} else if shell == "/bin/zsh" {
 		return filepath.Join(config.HomeDir, ".zshrc")
 	}
