@@ -3,6 +3,7 @@ package commands
 import (
 	commandhelper "caddy/src/cmd/commands/command-helper"
 	"caddy/src/parser"
+	"context"
 	"fmt"
 	"log"
 	"os"
@@ -18,7 +19,7 @@ func Pin() *cli.Command {
 	return &cli.Command{
 		Name:  "pin",
 		Usage: "Pin a tool to a specific version",
-		Action: func(cCtx *cli.Context) error {
+		Action: func(ctx context.Context, cCtx *cli.Command) error {
 			tool, requestedVersion := commandhelper.SplitToolAndVersion(cCtx.Args().Get(0))
 
 			checkValidVersion(requestedVersion)
