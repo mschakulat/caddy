@@ -3,21 +3,23 @@ package main
 import (
 	"caddy/src/cmd/commands"
 	"caddy/src/config"
-	"github.com/urfave/cli/v2"
+	"context"
 	"log"
 	"os"
+
+	"github.com/urfave/cli/v3"
 )
 
 func main() {
 	config.InitConfig()
-	
+
 	cli.VersionFlag = &cli.BoolFlag{
 		Name:    "version",
 		Aliases: []string{"v"},
 		Usage:   "Show current version",
 	}
 
-	app := &cli.App{
+	app := &cli.Command{
 		Name:    config.ProjectName,
 		Version: config.Version,
 		Usage:   "JavaScript tool manager",
@@ -34,7 +36,8 @@ func main() {
 		},
 	}
 
-	if err := app.Run(os.Args); err != nil {
+	ctx := context.Background()
+	if err := app.Run(ctx, os.Args); err != nil {
 		log.Fatal(err)
 	}
 }

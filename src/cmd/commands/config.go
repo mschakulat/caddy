@@ -3,23 +3,25 @@ package commands
 import (
 	"caddy/src/config"
 	"caddy/src/parser"
+	"context"
 	"fmt"
-	"github.com/logrusorgru/aurora"
-	"github.com/spf13/viper"
-	"github.com/urfave/cli/v2"
 	"os"
 	"regexp"
+
+	"github.com/logrusorgru/aurora"
+	"github.com/spf13/viper"
+	"github.com/urfave/cli/v3"
 )
 
 func Config() *cli.Command {
 	return &cli.Command{
 		Name:  "config",
 		Usage: "Configure caddy",
-		Subcommands: []*cli.Command{
+		Commands: []*cli.Command{
 			{
 				Name:  "id",
 				Usage: "Configure the identifier in the package.json (defaults to 'caddy')",
-				Action: func(cCtx *cli.Context) error {
+				Action: func(ctx context.Context, cCtx *cli.Command) error {
 					id := cCtx.Args().Get(0)
 					if len(id) == 0 {
 						fmt.Printf("%s %s\n", aurora.Bold(aurora.Cyan("Identifier")), parser.GetIdentifier())

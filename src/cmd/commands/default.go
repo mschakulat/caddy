@@ -4,19 +4,21 @@ import (
 	commandhelper "caddy/src/cmd/commands/command-helper"
 	"caddy/src/config"
 	"caddy/src/tools"
+	"context"
 	"fmt"
-	"github.com/fatih/color"
-	"github.com/logrusorgru/aurora"
-	"github.com/urfave/cli/v2"
 	"os"
 	"strings"
+
+	"github.com/fatih/color"
+	"github.com/logrusorgru/aurora"
+	"github.com/urfave/cli/v3"
 )
 
 func Default() *cli.Command {
 	return &cli.Command{
 		Name:  "default",
 		Usage: "Set a default version of a tool",
-		Action: func(cCtx *cli.Context) error {
+		Action: func(ctx context.Context, cCtx *cli.Command) error {
 			tool, requestedVersion := commandhelper.SplitToolAndVersion(cCtx.Args().Get(0))
 			if !commandhelper.IsSemver(requestedVersion) {
 				color.Yellow("Version not valid")

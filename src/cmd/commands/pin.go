@@ -4,13 +4,14 @@ import (
 	commandhelper "caddy/src/cmd/commands/command-helper"
 	"caddy/src/parser"
 	"fmt"
-	"github.com/logrusorgru/aurora"
-	"github.com/tidwall/sjson"
-	"github.com/urfave/cli/v2"
 	"log"
 	"os"
 	"path/filepath"
 	"strings"
+
+	"github.com/logrusorgru/aurora"
+	"github.com/tidwall/sjson"
+	"github.com/urfave/cli/v3"
 )
 
 func Pin() *cli.Command {
