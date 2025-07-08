@@ -33,6 +33,8 @@ func main() {
 			commands.Config(),
 			commands.Update(),
 			commands.Debug(),
+			commands.Init(),
+			commands.Cleanup(),
 		},
 	}
 

@@ -5,14 +5,9 @@ import (
 	"caddy/src/parser"
 	"context"
 	"fmt"
-	"log"
-	"os"
-	"path/filepath"
-	"strings"
-
 	"github.com/logrusorgru/aurora"
-	"github.com/tidwall/sjson"
 	"github.com/urfave/cli/v3"
+	"os"
 )
 
 func Pin() *cli.Command {
@@ -24,19 +19,8 @@ func Pin() *cli.Command {
 
 			checkValidVersion(requestedVersion)
 
-			dir, _ := os.Getwd()
-			packageJson := filepath.Join(dir, "package.json")
-
-			fileContent, _ := os.ReadFile(packageJson)
-
-			newJsonString, _ := sjson.Set(
-				string(fileContent), strings.Join([]string{parser.GetIdentifier(), tool}, "."), requestedVersion,
-			)
-
-			err := os.WriteFile(packageJson, []byte(newJsonString), 0644)
-			if err != nil {
-				log.Fatalf("failed writing to file: %s", err)
-			}
+			path := []string{parser.GetIdentifier(), tool}
+			commandhelper.WriteToJSON(path, requestedVersion)
 
 			fmt.Printf("%s %s@%s\n", aurora.Bold(aurora.Cyan("Pinned")), tool, requestedVersion)
 
