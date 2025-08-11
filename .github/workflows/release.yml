@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Set up docker buildx
         uses: docker/setup-buildx-action@v3
       - name: Build docker image
@@ -41,7 +41,7 @@ jobs:
     runs-on: macos-14
     steps:
       - name: Check out code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Checkout Go version
         uses: actions/setup-go@v5
         with:
@@ -59,7 +59,7 @@ jobs:
     runs-on: macos-14
     steps:
       - name: Check out code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Checkout Go version
         uses: actions/setup-go@v5
         with:
@@ -82,7 +82,7 @@ jobs:
     if: github.event_name == 'push'
     steps:
       - name: Check out code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Determine release version
         id: release_info
         env:
@@ -90,19 +90,19 @@ jobs:
         run: echo "version=${TAG:11}" >> $GITHUB_OUTPUT
 
       - name: Fetch Linux artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           name: linux
           path: release
 
       - name: Fetch MacOS artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           name: macos
           path: release
 
       - name: Fetch MacOS (ARM) artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           name: macos-aarch64
           path: release
