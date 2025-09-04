@@ -43,7 +43,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v5
       - name: Checkout Go version
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@v6
         with:
           go-version: 'stable'
       - name: Compile and package Caddy
@@ -61,7 +61,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v5
       - name: Checkout Go version
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@v6
         with:
           go-version: 'stable'
       - name: Compile and package Caddy
