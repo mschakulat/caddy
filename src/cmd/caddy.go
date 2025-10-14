@@ -1,11 +1,12 @@
 package main
 
 import (
-	"caddy/src/cmd/commands"
-	"caddy/src/config"
 	"context"
 	"log"
 	"os"
+
+	"caddy/src/cmd/commands"
+	"caddy/src/config"
 
 	"github.com/urfave/cli/v3"
 )
@@ -35,6 +36,7 @@ func main() {
 			commands.Debug(),
 			commands.Init(),
 			commands.Cleanup(),
+			commands.Repair(),
 		},
 	}
 
