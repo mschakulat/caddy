@@ -109,3 +109,11 @@ After that you have to remove the following lines from your `~/.bashrc` or `~/.z
 export CADDY_HOME=~/.caddy
 export PATH=$CADDY_HOME/bin:$PATH
 ```
+
+### Repair Binaries
+If you have issues with your installed binaries (e.g. exec format error),  
+you can use the `caddy repair` command to repair them:
+
+```bash
+caddy repair
+```
