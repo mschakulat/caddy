@@ -2,12 +2,13 @@ package download
 
 import (
 	"fmt"
-	"github.com/logrusorgru/aurora"
-	"github.com/schollz/progressbar/v3"
 	"io"
 	"net/http"
 	"os"
 	"path"
+
+	"github.com/logrusorgru/aurora"
+	"github.com/schollz/progressbar/v3"
 )
 
 func FetchTool(downloadLink string, target string, description string) string {
