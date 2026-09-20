@@ -2,7 +2,7 @@ module caddy
 
 go 1.25.0
 
-toolchain go1.26.6
+toolchain go1.27.1
 
 require (
 	github.com/Masterminds/semver v1.5.0
@@ -13,7 +13,7 @@ require (
 	github.com/tidwall/gjson v1.19.0
 	github.com/tidwall/pretty v1.2.1
 	github.com/tidwall/sjson v1.2.5
-	github.com/urfave/cli/v3 v3.10.1
+	github.com/urfave/cli/v3 v3.13.0
 	gopkg.in/yaml.v3 v3.0.1
 )
 
@@ -33,7 +33,7 @@ require (
 	github.com/subosito/gotenv v1.6.0 // indirect
 	github.com/tidwall/match v1.1.1 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
-	go.yaml.in/yaml/v3 v3.0.4 // indirect
+	go.yaml.in/yaml/v3 v3.0.5 // indirect
 	golang.org/x/sys v0.46.0 // indirect
 	golang.org/x/term v0.44.0 // indirect
 	golang.org/x/text v0.28.0 // indirect
